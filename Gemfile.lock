@@ -184,6 +184,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt
   bootstrap
   byebug
   coffee-rails (~> 4.2)

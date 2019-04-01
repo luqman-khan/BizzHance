@@ -1,0 +1,30 @@
+<h1>Users#show</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @organization.owner %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @organization.contact %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @organization.address %>
+</p>
+
+<p>
+  <strong>Authorize:</strong>
+  <%= @organization.authorize %>
+</p>
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
+
