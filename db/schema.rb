@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190401045557) do
+ActiveRecord::Schema.define(version: 20190401054022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20190401045557) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["organization_id"], name: "index_customers_on_organization_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.integer  "repair_id"
+    t.integer  "sale_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.index ["organization_id"], name: "index_images_on_organization_id", using: :btree
+    t.index ["repair_id"], name: "index_images_on_repair_id", using: :btree
+    t.index ["sale_id"], name: "index_images_on_sale_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -97,6 +114,9 @@ ActiveRecord::Schema.define(version: 20190401045557) do
   end
 
   add_foreign_key "customers", "organizations"
+  add_foreign_key "images", "organizations"
+  add_foreign_key "images", "repairs"
+  add_foreign_key "images", "sales"
   add_foreign_key "repairs", "customers"
   add_foreign_key "repairs", "organizations"
   add_foreign_key "repairs", "users"
