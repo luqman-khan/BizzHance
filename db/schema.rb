@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190401042729) do
+ActiveRecord::Schema.define(version: 20190401043854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20190401042729) do
     t.boolean  "authorize"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.text     "item_sold"
+    t.decimal  "item_price"
+    t.text     "note"
+    t.datetime "date_of_sale"
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["customer_id"], name: "index_sales_on_customer_id", using: :btree
+    t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +79,6 @@ ActiveRecord::Schema.define(version: 20190401042729) do
   end
 
   add_foreign_key "customers", "organizations"
+  add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "users"
 end

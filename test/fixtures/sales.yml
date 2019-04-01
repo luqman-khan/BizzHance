@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_sold: MyText
+  item_price: 9.99
+  note: MyText
+  date_of_sale: 2019-03-31 21:38:54
+  user: one
+  customer: one
+
+two:
+  item_sold: MyText
+  item_price: 9.99
+  note: MyText
+  date_of_sale: 2019-03-31 21:38:54
+  user: two
+  customer: two
