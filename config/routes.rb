@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :repairs
   resources :sales
   resources :customers
    	resources :organizations do

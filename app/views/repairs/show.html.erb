@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item name:</strong>
+  <%= @repair.item_name %>
+</p>
+
+<p>
+  <strong>Problem description:</strong>
+  <%= @repair.problem_description %>
+</p>
+
+<p>
+  <strong>Item condition:</strong>
+  <%= @repair.item_condition %>
+</p>
+
+<p>
+  <strong>Repair description:</strong>
+  <%= @repair.repair_description %>
+</p>
+
+<p>
+  <strong>Charge note:</strong>
+  <%= @repair.charge_note %>
+</p>
+
+<p>
+  <strong>Data saving:</strong>
+  <%= @repair.data_saving %>
+</p>
+
+<p>
+  <strong>Total charge:</strong>
+  <%= @repair.total_charge %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @repair.user %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @repair.customer %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @repair.organization %>
+</p>
+
+<%= link_to 'Edit', edit_repair_path(@repair) %> |
+<%= link_to 'Back', repairs_path %>

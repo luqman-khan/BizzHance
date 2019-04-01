@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_name: MyText
+  problem_description: MyText
+  item_condition: MyText
+  repair_description: MyText
+  charge_note: MyText
+  data_saving: 9.99
+  total_charge: 9.99
+  user: one
+  customer: one
+  organization: one
+
+two:
+  item_name: MyText
+  problem_description: MyText
+  item_condition: MyText
+  repair_description: MyText
+  charge_note: MyText
+  data_saving: 9.99
+  total_charge: 9.99
+  user: two
+  customer: two
+  organization: two

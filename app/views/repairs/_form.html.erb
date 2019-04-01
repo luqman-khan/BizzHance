@@ -1,0 +1,22 @@
+
+<%= simple_form_for(@repair) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :item_name %>
+    <%= f.input :problem_description %>
+    <%= f.input :item_condition %>
+    <%= f.input :repair_description %>
+    <%= f.input :charge_note %>
+    <%= f.input :data_saving %>
+    <%= f.input :total_charge %>
+    <%= f.association :user %>
+    <%= f.association :customer %>
+    <%= f.association :organization %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
