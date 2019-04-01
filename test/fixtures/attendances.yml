@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-03-31
+  check_in: 2019-03-31 22:57:31
+  check_out: MyString
+  datetime: MyString
+  hourly_pay: MyString
+  decimal: MyString
+  total_pay: 9.99
+  user: one
+
+two:
+  date: 2019-03-31
+  check_in: 2019-03-31 22:57:31
+  check_out: MyString
+  datetime: MyString
+  hourly_pay: MyString
+  decimal: MyString
+  total_pay: 9.99
+  user: two

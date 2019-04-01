@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
     belongs_to :organization
+    has_many :attendances
 end

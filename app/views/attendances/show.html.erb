@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @attendance.date %>
+</p>
+
+<p>
+  <strong>Check in:</strong>
+  <%= @attendance.check_in %>
+</p>
+
+<p>
+  <strong>Check out:</strong>
+  <%= @attendance.check_out %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @attendance.datetime %>
+</p>
+
+<p>
+  <strong>Hourly pay:</strong>
+  <%= @attendance.hourly_pay %>
+</p>
+
+<p>
+  <strong>Decimal:</strong>
+  <%= @attendance.decimal %>
+</p>
+
+<p>
+  <strong>Total pay:</strong>
+  <%= @attendance.total_pay %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @attendance.user %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Back', attendances_path %>
