@@ -50,5 +50,5 @@
   <%= @repair.organization %>
 </p>
 
-<%= link_to 'Edit', edit_repair_path(@repair) %> |
-<%= link_to 'Back', repairs_path %>
+<%= link_to 'Edit', edit_customer_repair_path @customer @repair %> |
+<%= link_to 'Back', customer_repairs_path @customer %>

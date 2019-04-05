@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
     belongs_to :organization
     has_many :attendances
+
+    validates :name,:role,:organization, presence: true
+
+
+
+    enum roles: [:owner, :admin, :employee]
 end

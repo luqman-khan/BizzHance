@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
  
   resources :attendances
-  resources :repairs
   resources :sales
-  resources :customers
+
+  get 'sales' => 'sales#index'
+  get 'repairs' => 'repairs#index'
+  resources :repairs, only: [:new]
+  resources :customers do
+      resources :repairs
+      resources :sales
+  end
+
    	resources :organizations do
   		resources :users
   	end
   	devise_for :users, controllers: {
-        sessions: 'users/sessions'
-        # registrations: 'users/registrations',
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
         # passwords: 'users/passwords'
     }
     resources :users do

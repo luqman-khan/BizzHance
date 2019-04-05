@@ -30,5 +30,5 @@
   <%= @sale.customer %>
 </p>
 
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>
+<%= link_to 'Edit', edit_customer_sale_path @customer, @sale %> |
+<%= link_to 'Back', customer_sales_path @customer %>

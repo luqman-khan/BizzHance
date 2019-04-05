@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@sale) do |f| %>
+<%= simple_form_for [@customer, @sale] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -7,9 +7,8 @@
     <%= f.input :item_sold %>
     <%= f.input :item_price %>
     <%= f.input :note %>
-    <%= f.input :date_of_sale %>
-    <%= f.association :user %>
-    <%= f.association :customer %>
+    <%= f.input :date_of_sale, as: :date %>
+    <%= f.association :customer, collection: @organization.customers, disabled: @customer ? true : false %>
   </div>
 
   <div class="form-actions">

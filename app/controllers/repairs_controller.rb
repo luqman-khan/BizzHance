@@ -1,10 +1,12 @@
 class RepairsController < ApplicationController
   before_action :set_repair, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer
 
   # GET /repairs
   # GET /repairs.json
   def index
-    @repairs = Repair.all
+    @repairs = Repair.generate_repair_index(@organization,@customer)
+    @new_path = @customer ? new_customer_repair_path(@customer) : new_repair_path
   end
 
   # GET /repairs/1
@@ -14,7 +16,8 @@ class RepairsController < ApplicationController
 
   # GET /repairs/new
   def new
-    @repair = Repair.new
+      @repair = Repair.generate_new_repair(@organization, @customer)
+      # @index_path = @customer ? customer_repairs_path : repairs_path
   end
 
   # GET /repairs/1/edit
@@ -24,10 +27,9 @@ class RepairsController < ApplicationController
   # POST /repairs
   # POST /repairs.json
   def create
-    @repair = Repair.new(repair_params)
-
+    @repair = @organization.repairs.new(repair_params)
     respond_to do |format|
-      if @repair.save
+      if @repair.save!
         format.html { redirect_to @repair, notice: 'Repair was successfully created.' }
         format.json { render :show, status: :created, location: @repair }
       else
@@ -64,7 +66,13 @@ class RepairsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repair
-      @repair = Repair.find(params[:id])
+      @repair = @organization.repairs.find(repair_params[:id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_customer
+      # @customer = Organization.find_customer_by_id(@organization, params[:customer_id])
+      @customer = @organization.customers.find(params[:customer_id]) if params[:customer_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

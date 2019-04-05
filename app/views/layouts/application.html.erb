@@ -3,14 +3,19 @@
   <head>
     <title>BizzHance</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  	<p class="notice"><%= notice %></p>
+    <%= render 'layouts/navbar'%>
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <div class="col-10">
+        <%= yield %>
+      </div>
+    </div>
+    
   </body>
 </html>
