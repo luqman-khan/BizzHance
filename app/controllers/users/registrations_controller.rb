@@ -56,6 +56,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     new_user_session_path
   end
 
+  def sign_up(resource_name, resource)
+  end
+
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     new_user_registration_path
