@@ -229,6 +229,7 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 6.0.0)
   pg (>= 0.18, < 2.0)
+  popper_js
   puma (~> 3.0)
   rails (~> 5.0.7, >= 5.0.7.2)
   redis (~> 3.0)

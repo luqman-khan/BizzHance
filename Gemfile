@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'bootstrap'
+gem 'popper_js'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'jquery-datatables'

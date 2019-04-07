@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require datatables
+//= require popper
+//= require bootstrap
 //= require_tree .
 
 
