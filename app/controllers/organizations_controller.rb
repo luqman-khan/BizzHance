@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_super_user?, only: [:index, :delete, :new, :create]
 
   # GET /organizations
   # GET /organizations.json
@@ -64,8 +65,13 @@ class OrganizationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organization
-      aaa
       @organization = Organization.find(params[:id])
+    end
+
+    def authenticate_super_user?
+      unless current_user.role == "SuperUser"
+        redirect_to customers_path, notice: "You are unauthorized!!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

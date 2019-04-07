@@ -1,12 +1,14 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   before_action :set_customer
+  before_action :set_customers, only: [:new, :edit]
+  before_action :set_read_only, only: [:new, :edit]
 
   # GET /sales
   # GET /sales.json
   def index
-    @sale = Sale.generate_sale_index(@organization,@customer)
-    @new_path = @customer ? new_customer_repair_path(@customer) : new_repair_path
+    @sales= Sale.includes(:customer, :user).generate_sale_index(@organization,@customer)
+    @new_path = @customer ? new_customer_sale_path(@customer) : new_sale_path
   end
 
   # GET /sales/1
@@ -16,7 +18,7 @@ class SalesController < ApplicationController
 
   # GET /sales/new
   def new
-    @sale = Sale.generate_new_sale(@organization, @customer)
+    @sale = Sale.includes(:customer).generate_new_sale(@organization, @customer)
   end
 
   # GET /sales/1/edit
@@ -26,11 +28,11 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = @organization.sales.new(sale_params)
+    @sale = @organization.sales.new(sale_params.merge(user_id: current_user.id))
 
     respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+      if @sale.save!
+        format.html { redirect_to customer_sale_path(@sale.customer,@sale), notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to customer_sale_path(@sale.customer,@sale), notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
       else
         format.html { render :edit }
@@ -58,7 +60,7 @@ class SalesController < ApplicationController
   def destroy
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
+      format.html { redirect_to (@customer ? customer_sales_url(@customer) : sales_url), notice: 'Sale was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,13 +68,20 @@ class SalesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
-      @sale = @organization.sales.find(sale_params[:id])
+      @sale = @organization.sales.find(params[:id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      # @customer = Organization.find_customer_by_id(@organization, params[:customer_id])
       @customer = @organization.customers.find(params[:customer_id]) if params[:customer_id]
+    end
+
+    def set_customers
+      @customers = @customer ? [@customer] : @organization.customers
+    end
+
+    def set_read_only
+      @read_only = @customer ? true : false
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

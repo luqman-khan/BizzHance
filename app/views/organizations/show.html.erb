@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
-</p>
+<h1>
+  <%= @organization.capitalize_name %>
+</h1>
 
 <p>
   <strong>Owner:</strong>
@@ -25,5 +24,5 @@
   <%= @organization.authorize %>
 </p>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+<%= link_to 'Edit', edit_organization_path(@organization), class: "btn btn-success" %> 
+<%= link_to 'Back', :back, class: "btn btn-secondary" %>

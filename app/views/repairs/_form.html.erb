@@ -11,7 +11,7 @@
       <%= f.input :charge_note %>
       <%= f.input :data_saving %>
       <%= f.input :total_charge %>
-      <%= f.association :customer, collection: @customer ? [@customer] : @organization.customers, readonly: @customer ? true : false %>
+      <%= f.association :customer, collection: @customers, readonly: @read_only %>
     </div>
 
     <div class="form-actions">

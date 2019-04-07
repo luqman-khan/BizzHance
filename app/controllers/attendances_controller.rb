@@ -1,10 +1,10 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_users, only: [:new, :edit]
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.all
+    @attendances = current_user.attendances
   end
 
   # GET /attendances/1
@@ -14,7 +14,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/new
   def new
-    @attendance = Attendance.new
+    @attendance = current_user.attendances.new
   end
 
   # GET /attendances/1/edit
@@ -24,7 +24,7 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    @attendance = Attendance.new(attendance_params)
+    @attendance = current_user.attendances.new(attendance_params)
 
     respond_to do |format|
       if @attendance.save
@@ -65,6 +65,10 @@ class AttendancesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_attendance
       @attendance = Attendance.find(params[:id])
+    end
+
+    def set_users
+      @users = (current_user.admin? || current_user.owner?) ? @organization.users : [current_user]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

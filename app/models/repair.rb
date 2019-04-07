@@ -4,8 +4,9 @@ class Repair < ApplicationRecord
   belongs_to :organization
   has_many :images
 
-  after_save :add_to_cutomer_total
+  after_save :add_to_customer_total
   before_update :update_customer_total
+  before_destroy :update_customer_total
 
 
   scope :generate_repair_index, -> (organization, customer){customer ? customer.repairs : organization.repairs}

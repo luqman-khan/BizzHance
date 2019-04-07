@@ -2,5 +2,6 @@
 
 <%= render 'form', repair: @repair %>
 
-<%= link_to 'Show', @repair %> |
-<%= link_to 'Back', repairs_path %>
+<br>
+<%= link_to 'Show', customer_repair_path(@repair.customer,@repair), class: "btn btn-info" %> |
+<%= link_to 'Back', :back, class: "btn btn-secondary" %>

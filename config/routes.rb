@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
  
-  resources :attendances
-  resources :sales
-
   get 'sales' => 'sales#index'
   get 'repairs' => 'repairs#index'
-  resources :repairs, only: [:new]
+  resources :repairs, only: [:new,:create]
+  resources :sales, only: [:new,:create]
   resources :customers do
       resources :repairs
       resources :sales
@@ -21,7 +19,8 @@ Rails.application.routes.draw do
     }
     resources :users do
     	root to: 'users/registrations#new'
+      resources :attendances
     end
-    root to: 'organizations#index'
+    root to: 'customers#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

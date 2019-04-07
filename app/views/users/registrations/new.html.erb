@@ -5,8 +5,8 @@
 
   <div class="form-inputs">
     <%= f.input :name%>
-    <%= f.input :role, collection: User.roles%>
-    <%= f.association  :organization, value_method: :name%>
+    <%= f.input :role, collection: User.capitalize_roles%>
+    <%= f.association  :organization,collection: Organization.capitalize_names%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

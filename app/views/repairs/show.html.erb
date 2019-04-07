@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<h1>
+  <%="#{@customer.capitalize_name}'s Repair"%>
+</h1>
 <p>
   <strong>Item name:</strong>
   <%= @repair.item_name %>
@@ -35,20 +37,5 @@
   <%= @repair.total_charge %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @repair.user %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @repair.customer %>
-</p>
-
-<p>
-  <strong>Organization:</strong>
-  <%= @repair.organization %>
-</p>
-
-<%= link_to 'Edit', edit_customer_repair_path @customer @repair %> |
-<%= link_to 'Back', customer_repairs_path @customer %>
+<%= link_to 'Edit', edit_customer_repair_path(@customer, @repair), class: "btn btn-success" %> 
+<%= link_to 'Back', customer_repairs_path(@customer), class: "btn btn-secondary" %>

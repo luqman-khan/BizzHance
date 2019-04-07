@@ -20,11 +20,11 @@
         <td><%= sale.item_price %></td>
         <td><%= sale.note %></td>
         <td><%= sale.date_of_sale %></td>
-        <td><%= sale.user %></td>
-        <td><%= sale.customer %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sale.user.name %></td>
+        <td><%= sale.customer.name %></td>
+        <td><%= link_to 'Show', customer_sale_path(sale.customer, sale), class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_customer_sale_path(sale.customer, sale), class: "btn btn-success" %></td>
+        <td><%= link_to 'Destroy', customer_sale_path(sale.customer,sale), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

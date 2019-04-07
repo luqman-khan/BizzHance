@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Repairs</h1>
+<h1><%=@customer ? "#{@customer.capitalize_name}'s Repairs" : "Repairs" %></h1>
 
 <%= render 'shared/repair_index'%>
 
-<%= link_to 'New Repair', @new_path %>
+<%= link_to 'New Repair', @new_path, class: "btn btn-primary" %>

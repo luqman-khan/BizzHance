@@ -1,17 +1,13 @@
 
-<%= simple_form_for(@attendance) do |f| %>
+<%= simple_form_for [current_user, @attendance] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :date %>
+    <%= f.input :date, as: :date %>
     <%= f.input :check_in %>
-    <%= f.input :check_out %>
-    <%= f.input :datetime %>
-    <%= f.input :hourly_pay %>
-    <%= f.input :decimal %>
-    <%= f.input :total_pay %>
-    <%= f.association :user %>
+    <%= f.input :check_out%>
+    <%= f.association :user, collection: @users %>
   </div>
 
   <div class="form-actions">

@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Attendances</h1>
+<h1>
+  <%="#{current_user.name.capitalize}'s Attendances"%>
+</h1>
 
 <table class="dtt table-striped">
   <thead>
@@ -40,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Attendance', new_attendance_path %>
+<%= link_to 'New Attendance', new_user_attendance_path(current_user), class: "btn btn-primary" %>

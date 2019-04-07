@@ -11,7 +11,6 @@
       <th>Total charge</th>
       <th>User</th>
       <th>Customer</th>
-      <th>Organization</th>
       <th></th>
       <th></th>
       <th></th>
@@ -28,12 +27,11 @@
         <td><%= repair.charge_note %></td>
         <td><%= repair.data_saving %></td>
         <td><%= repair.total_charge %></td>
-        <td><%= repair.user %></td>
-        <td><%= repair.customer %></td>
-        <td><%= repair.organization %></td>
-        <td><%= link_to 'Show', repair %></td>
-        <td><%= link_to 'Edit', edit_repair_path(repair) %></td>
-        <td><%= link_to 'Destroy', repair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= repair.user.name %></td>
+        <td><%= repair.customer.name %></td>
+        <td><%= link_to 'Show', customer_repair_path(repair.customer, repair) , class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_customer_repair_path(repair.customer, repair), class: "btn btn-success" %></td>
+        <td><%= link_to 'Destroy', customer_repair_path(repair.customer,repair), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

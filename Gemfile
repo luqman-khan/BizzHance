@@ -37,6 +37,10 @@ gem 'redis', '~> 3.0'
 # gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'bcrypt', '~> 3.1.12', platforms: :ruby
 # gem 'bcrypt', '~> 3.1.12', platforms: [:ruby, :x64_mingw, :mingw]
+gem 'execjs'
+# gem 'therubyrhino'
+# gem 'therubyracer'
+# gem 'mini_racer'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

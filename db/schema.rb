@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190401062521) do
+ActiveRecord::Schema.define(version: 20190406155430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,12 @@ ActiveRecord::Schema.define(version: 20190401062521) do
   create_table "attendances", force: :cascade do |t|
     t.date     "date"
     t.datetime "check_in"
-    t.string   "check_out"
-    t.string   "datetime"
     t.string   "hourly_pay"
-    t.string   "decimal"
     t.decimal  "total_pay"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "check_out"
     t.index ["user_id"], name: "index_attendances_on_user_id", using: :btree
   end
 
@@ -116,13 +114,13 @@ ActiveRecord::Schema.define(version: 20190401062521) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "name"
-    t.string   "role"
     t.decimal  "current_pay_rate"
     t.datetime "rate_since"
     t.boolean  "authorize"
     t.integer  "organization_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["organization_id"], name: "index_users_on_organization_id", using: :btree

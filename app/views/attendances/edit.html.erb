@@ -2,5 +2,6 @@
 
 <%= render 'form', attendance: @attendance %>
 
-<%= link_to 'Show', @attendance %> |
-<%= link_to 'Back', attendances_path %>
+<br>
+<%= link_to 'Show', user_attendance_path(current_user, @attendance), class: "btn btn-info" %> |
+<%= link_to 'Back', user_attendances_path(current_user), class: "btn btn-secondary" %>
