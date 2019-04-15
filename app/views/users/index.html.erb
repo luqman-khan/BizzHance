@@ -24,7 +24,7 @@
         <td><%= user.authorize %></td>
         <td><%= link_to 'Show', organization_user_path( @organization )%></td>
         <td><%= link_to 'Edit', edit_organization_user_path(@organization, user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

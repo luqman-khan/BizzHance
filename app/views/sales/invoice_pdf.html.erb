@@ -1,0 +1,109 @@
+<h1 class="text-center">Sales Invoice</h1><br>
+
+<hr>
+
+<table class= "table table-borderless">
+  <tbody>
+    <tr>
+      <td class="text-center">
+        <h2 class="text-center"><%=@organization.name%></h2>
+        <strong>Address: </strong><%=@organization.address%><br>
+        <strong>Phone: </strong><%=@organization.contact%>
+      </td>
+      <td class="text-right">
+        <strong>Invoice#: </strong>
+        <%=@sale.sale_number%>
+        <br>
+        <strong>Date: </strong>
+        <%=@sale.date_of_sale.to_date%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  <hr>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <ul>
+      <li>THIS RECEIPT IS REQUIRED AT ALL TIMES TO PICKUP THE PRODUCT.</li>
+      <li>All the customers are required to pick up their product within 30 Days regardless the customer is called. Failing to do so will cause the product to get discarded or sold without exceptions.</li>
+      <li>Cancelling the service after giving work authorization will impose charges for labor and part restocking accordingly.</li>
+      <li>By signing this invoice customer is fully authorizing us to work with and diagnose their device, regardless of the specified problem.</li>
+      <li>We are not responsible for partial or complete loss of information on the device. An operating system fix might result in partial or full loss of any software installed on the device.</li>
+      <li>We will not be responsible for any damaged or loss of customer parts in case of burglary, fire, earthquake and/or any other act of mother nature.</li>
+      <li>Customer is responsible to present a working device before turning in the device for servicing. The device will be considered dead or inoperative if the customer fails to do so.</li>
+      <li>Customer will be given 3 days to pickup their product after being notified. Product warranty is up to 15 days from the day of notification.</li>
+      <li>There is no diagnostic fee if the customer desires to fix or buy a device with us, otherwise a fee will be applied depending up on the labor spent to diagnose the problem. </li>
+      <li>Difficult and complicated jobs can take more than four weeks. In such cases it is the responsibility of the customer to keep themselves informed about the progress.</li>
+      <li>We do not charge for the software installed without product keys. Customer is responsible to purchase the activation of an unlicensed product. We charge only for the labor spent for installation.</li>
+      <li>I agree that computer zone and services is not responsible for any further damage done to the device in the process of fixing it.</li>
+    </ol>
+  </div>
+</div>
+
+<table class= "table table-borderless">
+  <tbody>
+    <tr>
+      <td class="text-left">
+        <strong>Customer Name : </strong>
+        <%="#{@customer.capitalize_name}"%>
+      </td>
+      <td class="text-right">
+        <strong>Phone : </strong>
+        <%="#{@customer.phone}"%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <thead>
+    <div class="row">
+      <div class="col-10">
+        <th width="80%">Item</th>
+      </div>
+      <div class="col-2">
+        <th width="20%">Price</th>
+      </div>
+    </div>
+  </thead>
+  <tbody>
+    <tr>
+      <div class="row">
+        <div class="col-10">
+          <td><%= @sale.item_sold %></td>
+        </div>
+        <div class="col-2">
+          <td><%= @sale.item_price %></td>
+        </div>
+      </div>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class= "table table-borderless", border="1">
+  <thead>
+    <th class="text-center">Note</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= @sale.note %>
+      </td>
+    </tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+  </tbody>
+</table>
+
+<br>
+<hr>
+
+<div class="text-left">
+<%="#{@customer.capitalize_name}'s Signature"%><br>
+(I am satisfied)
+</div>

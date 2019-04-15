@@ -7,13 +7,13 @@
     <tr>
       <th>Name</th>
       <th>Phone</th>
-      <th>Total purchase</th>
       <th>Total repair</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Total purchase</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Repair</th>
+      <th>Purchase</th>
     </tr>
   </thead>
 
@@ -22,11 +22,11 @@
       <tr>
         <td><%= customer.name %></td>
         <td><%= customer.phone %></td>
-        <td><%= customer.total_purchase %></td>
         <td><%= customer.total_repair %></td>
+        <td><%= customer.total_purchase %></td>
         <td><%= link_to 'Show', customer, class: "btn btn-info" %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
+        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
         <td><%= link_to 'Repairs', customer_repairs_path(customer), class: "btn btn-secondary" %></td>
         <td><%= link_to 'Purchases', customer_sales_path(customer), class: "btn btn-secondary" %></td>
       </tr>

@@ -6,10 +6,13 @@
       <th>Note</th>
       <th>Date of sale</th>
       <th>User</th>
-      <th>Customer</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <%unless @customer%>
+        <th>Customer</th>
+      <%end%>
+      <th>PDF</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
@@ -19,12 +22,15 @@
         <td><%= sale.item_sold %></td>
         <td><%= sale.item_price %></td>
         <td><%= sale.note %></td>
-        <td><%= sale.date_of_sale %></td>
+        <td><%= sale.date_of_sale.to_date %></td>
         <td><%= sale.user.name %></td>
-        <td><%= sale.customer.name %></td>
+        <%unless @customer%>
+          <td><%= sale.customer.name %></td>
+        <%end%>
+        <td><%= link_to 'PDF', customer_sale_path(sale.customer, sale, format: :pdf), class: "btn btn-info" %></td>
         <td><%= link_to 'Show', customer_sale_path(sale.customer, sale), class: "btn btn-info" %></td>
         <td><%= link_to 'Edit', edit_customer_sale_path(sale.customer, sale), class: "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', customer_sale_path(sale.customer,sale), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
+        <td><%= link_to 'Delete', customer_sale_path(sale.customer,sale), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

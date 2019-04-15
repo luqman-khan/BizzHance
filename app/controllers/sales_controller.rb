@@ -14,6 +14,12 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render @sale.generate_sale_pdf
+      end
+    end
   end
 
   # GET /sales/new
@@ -28,7 +34,8 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = @organization.sales.new(sale_params.merge(user_id: current_user.id))
+    @sale = @organization.sales.new(sale_params.merge(user_id: current_user.id, sale_number: Organization.get_next_sale_number(@organization),
+      date_of_sale: DateTime.now))
 
     respond_to do |format|
       if @sale.save!

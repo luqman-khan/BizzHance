@@ -14,11 +14,17 @@ class RepairsController < ApplicationController
   # GET /repairs/1
   # GET /repairs/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render @repair.generate_repair_pdf
+      end
+    end
   end
 
   # GET /repairs/new
   def new
-      @repair = Repair.includes(:customer).generate_new_repair(@organization, @customer)
+    @repair = Repair.includes(:customer).generate_new_repair(@organization, @customer)
   end
 
   # GET /repairs/1/edit
@@ -28,7 +34,8 @@ class RepairsController < ApplicationController
   # POST /repairs
   # POST /repairs.json
   def create
-    @repair = @organization.repairs.new(repair_params.merge(user_id: current_user.id))
+    @repair = @organization.repairs.new(repair_params.merge(user_id: current_user.id, repair_number: Organization.get_next_repair_number(@organization),
+      date_of_repair: DateTime.now))
     respond_to do |format|
       if @repair.save!
         format.html { redirect_to customer_repair_path(@repair.customer, @repair), notice: 'Repair was successfully created.' }

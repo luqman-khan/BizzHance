@@ -36,6 +36,6 @@
   <strong>Total charge:</strong>
   <%= @repair.total_charge %>
 </p>
-
+<%= link_to 'PDF', customer_repair_path(@customer, @repair, format: :pdf), class: "btn btn-info" %>
 <%= link_to 'Edit', edit_customer_repair_path(@customer, @repair), class: "btn btn-success" %> 
 <%= link_to 'Back', customer_repairs_path(@customer), class: "btn btn-secondary" %>

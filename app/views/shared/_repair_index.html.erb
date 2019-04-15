@@ -4,16 +4,17 @@
     <tr>
       <th>Item name</th>
       <th>Problem description</th>
-      <th>Item condition</th>
-      <th>Repair description</th>
-      <th>Charge note</th>
       <th>Data saving</th>
       <th>Total charge</th>
+      <th>Date of Repair</th>
       <th>User</th>
-      <th>Customer</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <%unless @customer%>
+        <th>Customer</th>
+      <%end%>
+      <th>PDF</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
@@ -22,16 +23,17 @@
       <tr>
         <td><%= repair.item_name %></td>
         <td><%= repair.problem_description %></td>
-        <td><%= repair.item_condition %></td>
-        <td><%= repair.repair_description %></td>
-        <td><%= repair.charge_note %></td>
         <td><%= repair.data_saving %></td>
         <td><%= repair.total_charge %></td>
+        <td><%= repair.date_of_repair.to_date %></td>
         <td><%= repair.user.name %></td>
-        <td><%= repair.customer.name %></td>
+        <%unless @customer%>
+          <td><%= repair.customer.name %></td>
+        <%end%>
+        <td><%= link_to 'PDF', customer_repair_path(repair.customer, repair, format: :pdf), class: "btn btn-info" %></td>
         <td><%= link_to 'Show', customer_repair_path(repair.customer, repair) , class: "btn btn-info" %></td>
         <td><%= link_to 'Edit', edit_customer_repair_path(repair.customer, repair), class: "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', customer_repair_path(repair.customer,repair), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
+        <td><%= link_to 'Delete', customer_repair_path(repair.customer,repair), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190406155430) do
+ActiveRecord::Schema.define(version: 20190414234932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(version: 20190406155430) do
     t.integer  "organization_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.datetime "date_of_repair"
+    t.datetime "date_of_repair_done"
+    t.datetime "date_of_pickup"
+    t.bigint   "repair_number"
     t.index ["customer_id"], name: "index_repairs_on_customer_id", using: :btree
     t.index ["organization_id"], name: "index_repairs_on_organization_id", using: :btree
     t.index ["user_id"], name: "index_repairs_on_user_id", using: :btree
@@ -93,6 +97,7 @@ ActiveRecord::Schema.define(version: 20190406155430) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "organization_id"
+    t.bigint   "sale_number"
     t.index ["customer_id"], name: "index_sales_on_customer_id", using: :btree
     t.index ["organization_id"], name: "index_sales_on_organization_id", using: :btree
     t.index ["user_id"], name: "index_sales_on_user_id", using: :btree

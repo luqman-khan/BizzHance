@@ -8,8 +8,10 @@ class Sale < ApplicationRecord
   before_update :update_customer_total
   before_destroy :update_customer_total
 
+  validates :item_price, presence: true
+
   scope :generate_sale_index, -> (organization, customer){customer ? customer.sales : organization.sales}
-  scope :generate_new_sale, -> (organization, customer) {customer ? customer.sales.new : organization.sales.new}
+  scope :generate_new_sale, -> (organization, customer) {customer ? customer.sales.new({item_price: 0}) : organization.sales.new({item_price: 0})}
 
   # This method adds to the total repairs done by the customer in the customer talbe just before creating a new repair
   def add_to_customer_total
@@ -32,5 +34,12 @@ class Sale < ApplicationRecord
   		customer.total_purchase -= sale.item_price
   	end
   	customer.save
+  end
+
+  def generate_sale_pdf
+    return {pdf: "#{self.customer.name}_##{self.id}",
+        template: "sales/invoice_pdf.html.erb",
+        disable_smart_shrinking: false,
+        title:  'Sales Invoice'}
   end
 end
