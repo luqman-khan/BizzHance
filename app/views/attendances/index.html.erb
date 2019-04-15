@@ -23,14 +23,14 @@
     <% @attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.date %></td>
-        <td><%= attendance.check_in %></td>
-        <td><%= attendance.check_out %></td>
+        <td><%= to_date_time(attendance.check_in)%></td>
+        <td><%= to_date_time(attendance.check_out)%></td>
         <td><%= attendance.hourly_pay %></td>
         <td><%= attendance.total_pay %></td>
-        <td><%= attendance.user %></td>
-        <td><%= link_to 'Show', attendance %></td>
-        <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
-        <td><%= link_to 'Delete', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= attendance.user.name %></td>
+        <td><%= link_to 'Show', user_attendance_path(current_user,attendance), class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_user_attendance_path(current_user, attendance), class: "btn btn-success"  %></td>
+        <td><%= link_to 'Delete', user_attendance_path(current_user,attendance), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,27 +10,17 @@
 
 <p>
   <strong>Check in:</strong>
-  <%= @attendance.check_in %>
+  <%= to_date_time(@attendance.check_in) %>
 </p>
 
 <p>
   <strong>Check out:</strong>
-  <%= @attendance.check_out %>
-</p>
-
-<p>
-  <strong>Datetime:</strong>
-  <%= @attendance.datetime %>
+  <%= to_date_time(@attendance.check_out)%>
 </p>
 
 <p>
   <strong>Hourly pay:</strong>
   <%= @attendance.hourly_pay %>
-</p>
-
-<p>
-  <strong>Decimal:</strong>
-  <%= @attendance.decimal %>
 </p>
 
 <p>
@@ -40,8 +30,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @attendance.user %>
+  <%= @attendance.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
-<%= link_to 'Back', attendances_path %>
+<%= link_to 'Edit', edit_user_attendance_path(current_user, @attendance), class: "btn btn-success" %> 
+<%= link_to 'Back', user_attendances_path(current_user), class: "btn btn-primary"  %>
