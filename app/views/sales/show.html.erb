@@ -28,6 +28,6 @@
   <strong>User:</strong>
   <%= @sale.user.name %>
 </p>
-<%= link_to 'PDF', customer_sale_path(sale.customer, sale, format: :pdf), class: "btn btn-info" %>
+<%= link_to 'PDF', customer_sale_path(@customer, @sale, format: :pdf), class: "btn btn-info" %>
 <%= link_to 'Edit', edit_customer_sale_path(@customer, @sale), class: "btn btn-success" %> |
 <%= link_to 'Back', customer_sales_path(@customer), class: "btn btn-secondary" %>
